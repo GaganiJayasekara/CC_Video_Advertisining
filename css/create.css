@@ -4,11 +4,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
+
 
 nav {
   border-bottom: 1px solid #ddd;
@@ -34,7 +30,6 @@ nav {
 
 .custom-select option {
     padding: 10px;
-    color: #000;
 }
 
 .container{
