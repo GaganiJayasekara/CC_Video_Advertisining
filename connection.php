@@ -1,11 +1,11 @@
 <?php
 $host = 'localhost';     
-$dbname = 'ycd'; 
+$dbname = 'ccvideo'; 
 $username = 'root'; 
-$password = 'gagani@1234'; 
+$password = '12345'; 
 
 // Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
+$conn = new mysqli($host, $username, $password, $dbname,3307);
 
 // Check connection
 if ($conn->connect_error) {
