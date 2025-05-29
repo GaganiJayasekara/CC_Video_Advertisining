@@ -1,3 +1,39 @@
+<?php
+session_start();
+include 'connection.php';
+
+$login_error = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_name = $_POST['user_name'];
+    $password = $_POST['password'];
+
+    // Fetch user from database
+    $sql = "SELECT * FROM Customer WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $user_name);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if user exists
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        // Verify password
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['user_name'] = $user_name;
+            header("Location: home.php");
+            exit();
+        } else {
+            $login_error = "Invalid password!";
+        }
+    } else {
+        $login_error = "Username not found!";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +54,7 @@
   <div class="signin-container mx-auto my-5 p-4 text-white">
      <img src="../CC_Video_Advertisining/images/logo.png" alt="Creative Creator Logo" class="logo mb-3">
     <h2 class="text-center mb-4">Sign in</h2>
-    <form>
+    <form method="POST" action="">
       <input name="user_name" type="text" class="form-control mb-3" placeholder="User Name">
       <input name="password" type="password" class="form-control mb-3" placeholder="Password">
       <div class="d-flex justify-content-center gap-3">
