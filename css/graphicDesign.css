@@ -25,15 +25,32 @@ nav {
   border-bottom: 2px solid #d60000;
 }
 
-.image-button {
-  border: none;
-  background: none;
-  padding: 0;
-  transition: transform 0.2s;
+.custom-select {
+    font-style: italic;
+    font-size: 18px;
+    border-radius: 0;
+    border: 1px solid black;
 }
 
-.image-button:hover {
-  transform: scale(1.03);
+.custom-select option {
+    padding: 10px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+button {
+    padding: 0.75rem 3rem;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .container{
@@ -144,4 +161,4 @@ ul{
 	color:#444444;
 	text-align: center;
 	margin-top:30px;
-}
+}s
