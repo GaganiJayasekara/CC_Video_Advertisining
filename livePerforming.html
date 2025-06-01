@@ -14,16 +14,24 @@
     <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="../CC_Video_Advertisining/images/logo.png" alt="Logo" style="height: 75px;"></a>
+      <a class="navbar-brand" href="../CC_Video_Advertisining/home.html">
+  <img src="../CC_Video_Advertisining/images/logo.png" alt="Logo" style="height: 75px;">
+</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Create</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Feedback</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/create.html">Create</a></li>
+          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/about.html">About Us</a></li>
         </ul>
-        <i class="fas fa-user fa-2x"></i>
+        <div class="profile-dropdown">
+  <i class="fas fa-user fa-2x" id="profileIcon"></i>
+  <div class="dropdown-content" id="signoutMenu">
+    <a href="../CC_Video_Advertisining/start.html">Sign Out</a>
+  </div>
+</div>
+
       </div>
     </div>
   </nav>
@@ -38,10 +46,10 @@
                         <input type="text" id="duration">
                     </div>
                     <div class="form-group">
-                        <label for="voice">What do you want voice</label>
+                        <label for="voice">Which presenter do you want</label>
                         <div class="select-wrapper">
                             <select id="voice">
-                                <option value="">Select voice option</option>
+                                <option value="">Select presenter</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -79,10 +87,10 @@
 			
   	 			<h4>Video Production</h4>
   	 			<ul>
-  	 				<li><a href="#">Text Animation Video Ads</a></li>
-  	 				<li><a href="#">Live Performing Video Ads</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/textAnimation.html">Text Animation Video Ads</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/livePerforming.html">Live Performing Video Ads</a></li>
   	 				<li><a href="#">Logo animations</a></li>
-  	 				<li><a href="#">Intro Video</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/introVideo.html">Intro Video</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
@@ -90,7 +98,7 @@
   	 			<ul>
   	 				<li><a href="#">Ringing tones</a></li>
   	 				<li><a href="#">Video Ads</a></li>
-  	 				<li><a href="#">Logo Design</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/logoDesign.html">Logo Design</a></li>
   	 				<li><a href="#">Flyers</a></li>
   	 				<li><a href="#">Business Cards</a></li>
   	 			</ul>
@@ -128,6 +136,22 @@
   	 	<p>Copyright &copy; 2025 CC Video Advertising. All rights reserved.</p>
   	 	
   </footer>
+
+  <script>
+  const profileIcon = document.getElementById("profileIcon");
+  const signoutMenu = document.getElementById("signoutMenu");
+
+  profileIcon.addEventListener("click", () => {
+    signoutMenu.style.display = signoutMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener("click", function(event) {
+    if (!profileIcon.contains(event.target) && !signoutMenu.contains(event.target)) {
+      signoutMenu.style.display = "none";
+    }
+  });
+</script>
 
 </body>
 </html>
