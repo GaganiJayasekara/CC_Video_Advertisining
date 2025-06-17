@@ -25,6 +25,20 @@ nav {
   border-bottom: 2px solid #d60000;
 }
 
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  min-width: 120px;
+  z-index: 1000;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f9fa;
+}
+
 .custom-select {
     font-style: italic;
     font-size: 18px;

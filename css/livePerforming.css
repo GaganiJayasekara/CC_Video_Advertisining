@@ -28,6 +28,20 @@ nav {
   font-weight: bold;
   border-bottom: 2px solid #d60000;
 }
+
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  min-width: 120px;
+  z-index: 1000;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f9fa;
+}
 /* Main content styles */
 main {
     flex-grow: 1;

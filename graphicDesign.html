@@ -13,21 +13,30 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="../CC_Video_Advertisining/images/logo.png" alt="Logo" style="height: 75px;"></a>
+    <a class="navbar-brand" href="../CC_Video_Advertisining/home.php">
+  <img src="../CC_Video_Advertisining/images/logo.png" alt="Logo" style="height: 75px;">
+</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
         <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/home.php">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/services.html">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/feedback.html">Create</a></li>
-        <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/feedback.html">Feedback</a></li>
+        <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/create.html">Create</a></li>
+        <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/feedback.php">Feedback</a></li>
         <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/about.html">About Us</a></li>
       </ul>
-      <i class="fas fa-user fa-2x"></i>
+      <div class="profile-dropdown">
+  <i class="fas fa-user fa-2x" id="profileIcon"></i>
+  <div class="dropdown-content" id="signoutMenu">
+    <a href="../CC_Video_Advertisining/start.html">Sign Out</a>
+  </div>
+</div>
+
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
+  <form action="" method="POST" enctype="multipart/form-data"></form>
 <div class="container my-5">
   <h4>Graphic Design</h4>
   <p>What Service do you need?</p>
@@ -35,13 +44,13 @@
   <div class="mb-4">
     <h6 class="fw-bold">Graphic Design</h6>
     <select class="form-select" id="graphicServiceSelect">
-      <option value="bannerDesign.html" selected>Banner Design</option>
-      <option value="socialMediaPost.html">Social Media Post</option>
-      <option value="bookCover.html">Book Cover</option>
-      <option value="tuteCover.html">Tute Cover</option>
-      <option value="logoDesign.html">Logo Design</option>
-      <option value="introVideo.html">Intro Video</option>
-      <option value="posterLeaflet.html">Posters/Leaflet</option>
+      <option value="bannerDesign.php" selected>Banner Design</option>
+      <option value="socialMediaPost.php">Social Media Post</option>
+      <option value="bookCover.php">Book Cover</option>
+      <option value="tuteCover.php">Tute Cover</option>
+      <option value="logoDesign.php">Logo Design</option>
+      <option value="introVideo.php">Intro Video</option>
+      <option value="posterLeaflet.php">Posters/Leaflet</option>
     </select>
   </div>
 
@@ -58,10 +67,10 @@
       <div class="footer-col">
         <h4>Video Production</h4>
         <ul>
-          <li><a href="#">Text Animation Video Ads</a></li>
-          <li><a href="#">Live Performing Video Ads</a></li>
+          <li><a href="../CC_Video_Advertisining/textAnimation.html">Text Animation Video Ads</a></li>
+          <li><a href="../CC_Video_Advertisining/livePerforming.html">Live Performing Video Ads</a></li>
           <li><a href="#">Logo animations</a></li>
-          <li><a href="#">Intro Video</a></li>
+          <li><a href="../CC_Video_Advertisining/introVideo.html">Intro Video</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -69,7 +78,7 @@
         <ul>
           <li><a href="#">Ringing tones</a></li>
           <li><a href="#">Video Ads</a></li>
-          <li><a href="#">Logo Design</a></li>
+          <li><a href="../CC_Video_Advertisining/logoDesign.html">Logo Design</a></li>
           <li><a href="#">Flyers</a></li>
           <li><a href="#">Business Cards</a></li>
         </ul>
@@ -116,6 +125,22 @@
   function resetGraphicSelection() {
     document.getElementById("graphicServiceSelect").selectedIndex = 0;
   }
+</script>
+
+<script>
+  const profileIcon = document.getElementById("profileIcon");
+  const signoutMenu = document.getElementById("signoutMenu");
+
+  profileIcon.addEventListener("click", () => {
+    signoutMenu.style.display = signoutMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener("click", function(event) {
+    if (!profileIcon.contains(event.target) && !signoutMenu.contains(event.target)) {
+      signoutMenu.style.display = "none";
+    }
+  });
 </script>
 
 </body>

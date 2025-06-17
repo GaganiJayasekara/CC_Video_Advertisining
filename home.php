@@ -21,11 +21,16 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
           <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/home.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/create.html">Create</a></li>
-          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/create.php">Create</a></li>
+          <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/feedback.php">Feedback</a></li>
           <li class="nav-item"><a class="nav-link" href="../CC_Video_Advertisining/about.html">About Us</a></li>
         </ul>
-        <i class="fas fa-user fa-2x"></i>
+                  <div class="profile-dropdown position-relative ms-3">
+  <i class="fas fa-user fa-2x" id="profileIcon" style="cursor: pointer;"></i>
+  <div class="dropdown-content position-absolute bg-white border rounded shadow" id="signoutMenu" style="display: none; right: 0;">
+    <a href="../CC_Video_Advertisining/start.html" class="d-block px-3 py-2 text-dark text-decoration-none">Sign Out</a>
+  </div>
+      </div>
       </div>
     </div>
   </nav>
@@ -34,7 +39,10 @@
   <section class="hero-section d-flex flex-wrap align-items-center justify-content-center">
     <div class="hero-text">
       <p>Creative Videos<br>&<br> Powerful Impact</p>
-      <button class="hero-btn">Create Your Own Video</button>
+      <button class="hero-btn">
+  <a href="../CC_Video_Advertisining/create.php" style="text-decoration: none; color: white;">Create Your Own Video</a>
+</button>
+
     </div>
     <div class="hero-image">
       <img src="../CC_Video_Advertisining/images/home.jpg" alt="Editing image">
@@ -51,10 +59,10 @@
 			
   	 			<h4>Video Production</h4>
   	 			<ul>
-  	 				<li><a href="#">Text Animation Video Ads</a></li>
-  	 				<li><a href="#">Live Performing Video Ads</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/textAnimation.html">Text Animation Video Ads</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/livePerforming.html">Live Performing Video Ads</a></li>
   	 				<li><a href="#">Logo animations</a></li>
-  	 				<li><a href="#">Intro Video</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/introVideo.html">Intro Video</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
@@ -62,7 +70,7 @@
   	 			<ul>
   	 				<li><a href="#">Ringing tones</a></li>
   	 				<li><a href="#">Video Ads</a></li>
-  	 				<li><a href="#">Logo Design</a></li>
+  	 				<li><a href="../CC_Video_Advertisining/logoDesign.html">Logo Design</a></li>
   	 				<li><a href="#">Flyers</a></li>
   	 				<li><a href="#">Business Cards</a></li>
   	 			</ul>
@@ -100,5 +108,21 @@
   	 	<p>Copyright &copy; 2025 CC Video Advertising. All rights reserved.</p>
   	 	
   </footer>
+
+    <script>
+  const profileIcon = document.getElementById("profileIcon");
+  const signoutMenu = document.getElementById("signoutMenu");
+
+  profileIcon.addEventListener("click", () => {
+    signoutMenu.style.display = signoutMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // Hide dropdown if clicked outside
+  document.addEventListener("click", function(event) {
+    if (!profileIcon.contains(event.target) && !signoutMenu.contains(event.target)) {
+      signoutMenu.style.display = "none";
+    }
+  });
+</script>
 </body>
 </html>
