@@ -1,0 +1,119 @@
+<?php
+session_start();
+include 'connection.php';
+
+$login_error = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_name = trim($_POST['user_name']);
+    $password = $_POST['password'];
+
+    // Fetch user from database
+    $sql = "SELECT * FROM Customer WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $user_name);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if user exists
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        // Verify password
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['username'] = $user_name;
+            header("Location: home.php");
+            exit();
+        } else {
+            $login_error = "❌ Invalid password!";
+        }
+    } else {
+        $login_error = "❌ Username not found!";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CC Video Advertising - Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../CC_Video_Advertisining/css/login.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="signin-container mx-auto my-5 p-4 text-white">
+  <img src="../CC_Video_Advertisining/images/logo.png" alt="Creative Creator Logo" class="logo mb-3">
+  <h2 class="text-center mb-4">Sign in</h2>
+
+  <?php if (!empty($login_error)): ?>
+    <div class="alert alert-danger text-center"><?= $login_error ?></div>
+  <?php endif; ?>
+
+  <form method="POST" action="">
+    <input name="user_name" type="text" class="form-control mb-3" placeholder="User Name" required>
+    <input name="password" type="password" class="form-control mb-3" placeholder="Password" required>
+    <div class="d-flex justify-content-center gap-3">
+      <button type="submit" class="btn btn-dark px-4 rounded-pill">Sign in</button>
+      <button type="reset" class="btn btn-secondary px-4 rounded-pill">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col">
+        <h4>Video Production</h4>
+        <ul>
+          <li><a href="#">Text Animation Video Ads</a></li>
+          <li><a href="#">Live Performing Video Ads</a></li>
+          <li><a href="#">Logo animations</a></li>
+          <li><a href="#">Intro Video</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Other Services</h4>
+        <ul>
+          <li><a href="#">Ringing tones</a></li>
+          <li><a href="#">Video Ads</a></li>
+          <li><a href="#">Logo Design</a></li>
+          <li><a href="#">Flyers</a></li>
+          <li><a href="#">Business Cards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="#">Phone</a>
+            <ul><li class="a">078 73 86 366</li></ul>
+          </li>
+          <li><a href="#">Email</a>
+            <ul><li class="a">chanukanirmal899@gmail.com</li></ul>
+          </li>
+          <li><a href="#">Address</a>
+            <ul><li class="a">G38,CC Video Advertising,<br>Ruwanwella, Kegalle.</li></ul>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 CC Video Advertising. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
